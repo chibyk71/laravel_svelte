@@ -3,12 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Hamcrest\Type\IsBoolean;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use HasFactory, Notifiable;
 
     /**
@@ -43,5 +44,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin(): bool {
+        return boolval($this->is_admin);
+    }
+
+    public function isPostLiked(Post $post): bool {
+        return $this->likes()->where("post_id",$post->id)->exists();
+    }
+
+    public function likes() {
+        return $this->belongsToMany(Post::class, "likes")->withTimestamps();
     }
 }
