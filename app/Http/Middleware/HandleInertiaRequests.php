@@ -33,10 +33,8 @@ class HandleInertiaRequests extends Middleware
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request): array
-    {
-        return array_merge(parent::share($request), [
-            //
-        ]);
+    public function share(Request $request): array {
+        $user = $request->user? $request->user()->only(["id","name","email","is_admin"]) : [];
+        return array_merge(parent::share($request), compact("user"));
     }
 }

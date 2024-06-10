@@ -17,9 +17,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return Inertia::render('profile/edit', [
-            'user' => $request->user(),
-        ]);
+        return Inertia::render('Profile');
     }
 
     /**

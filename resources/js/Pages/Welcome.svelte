@@ -2,13 +2,31 @@
 	import { isfixed } from '../lib/util/headerFixed';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Splide, SplideTrack, SplideSlide } from '@splidejs/svelte-splide';
+	// import Swiper JS
+	import Swiper from 'swiper';
+    import { Pagination , Autoplay} from 'swiper/modules';
+	// import Swiper styles
+	import 'swiper/css';
     import Layout from './shared/layout.svelte';
     let loaded = false;
-    export let data;
 
     $isfixed = false
-    onMount(()=> loaded = true)
+    onMount(()=> {
+        loaded = true;
+        const swiper = new Swiper(".get-started",{
+            parallax: true,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			autoplay: true,
+			pagination: {
+                el: ".swiper-pagination",
+                type: "bullets"
+			},
+            modules: [Pagination,Autoplay],
+		});
+
+    })
+    
 </script>
 
 <Layout>
@@ -52,31 +70,31 @@
 				<div class="bg-image bg-image-overlay" style="background-image: url(images/login/pic1.jpg);"></div>
 				<div class="join-area">
 					<div class="mb-3">
-                        <Splide hasTrack={false} class="get-started" options={{arrows:false,autoplay:true}}>
-                            <SplideTrack>
-                                <SplideSlide>
-                                    <div class="started">
+                        <div class="swiper swiper-container get-started">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="started">
 										<h1 class="title">Hello, And Welcome to Soziety.</h1>
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
 									</div>
-                                </SplideSlide>
-                                <SplideSlide>
-                                    <div class="started">
+								</div>
+								<div class="swiper-slide">
+									<div class="started">
 										<h1>People's First Prefrence Is Soziety</h1>
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
 									</div>
-                                </SplideSlide>
-                                <SplideSlide>
-                                    <div class="started">
-										<h1 class="title">Hello, And Welcome to Soziety.</h1>
+								</div>
+								<div class="swiper-slide">
+									<div class="started">
+										<h1>Expand Your Network With Soziety</h1>
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
 									</div>
-                                </SplideSlide>
-                            </SplideTrack>
+								</div>
+							</div>
                             <div class="swiper-btn">
-                                <ul class="splide__pagination style-1 flex-1"></ul>
+                                <div class="swiper-pagination style-1 flex-1"></div>
                             </div>
-                        </Splide>
+						</div>
 					</div>
 					<a href="/register" class="btn btn-primary btn-block mb-3 text-center">CREATE ACCOUNT</a>
 					<a href="/login" class="btn btn-light btn-block mb-3 text-center">SIGN IN</a>

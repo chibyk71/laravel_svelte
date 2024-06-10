@@ -26,3 +26,11 @@ export const User = {
         return {}
     })
 }
+
+export const userHasInteracted = writable(false);
+
+export const ShowHeader = writable(false)
+
+export const UserAvatar = (str:string)=>{
+    return `https://ui-avatars.com/api/?name=${str}&background=0D8ABC&color=fff`
+}

@@ -9,7 +9,6 @@ use Inertia\Response;
 
 class HomeController extends Controller{
     function show(): Response {
-        $user = auth()->user();
         $posts = Post::withCount("likes")->with("medias")->orderBy("created_at","DESC")->paginate(10);
 
         foreach($posts as $post) {
@@ -21,7 +20,7 @@ class HomeController extends Controller{
 
     
     public function fetch() {
-        $posts = Post::with(["medias","likes"])->orderBy("created_at","DESC")->paginate(10);
+        $posts = Post::withCount("likes")->with("medias")->orderBy("created_at","DESC")->paginate(10);
 
         foreach($posts as $post) {
             $post->isLiked = $post->isLiked();
