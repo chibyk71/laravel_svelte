@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ReplylikeController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -42,5 +43,7 @@ Route::post("/reply/{id}", [ReplyController::class, "store"])->name("reply.store
 
 Route::post("/reply/{id}/like", [ReplylikeController::class, "store"])->name("reply.like");
 Route::post("/reply/{id}/unlike", [ReplylikeController::class, "destroy"])->name("reply.unlike");
+
+Route::get("setting", [SettingController::class, "index"]);
 
 require __DIR__.'/auth.php';

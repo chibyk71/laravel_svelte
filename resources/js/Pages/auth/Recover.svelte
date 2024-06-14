@@ -1,9 +1,13 @@
 <script lang="ts">
+    import { handleSubmit } from 'resources/js/lib/util/formSubmit';
 	import { goBack } from '../../lib/util/backBtn';
 	import { isfixed } from '../../lib/util/headerFixed';
+	import { useForm } from "@inertiajs/svelte";
     $isfixed = false
 
-    // TODO form submit
+	const form = useForm({
+		email: null
+	})
 </script>
 
 <!-- Welcome Start -->
@@ -14,11 +18,11 @@
 				<div class="join-area h-1/2">
 					<div class="started">
 						<h1 class="title">Forgot Password</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+						<p>No worries! Happens to the best of us. Enter the email address associated with your account and we'll send you instructions to reset your password.</p>
 					</div>
-					<form method="post" action="/recover/" id="reset">
+					<form method="post" action="/recover/" id="reset" on:submit={()=>handleSubmit($form,"/recover")}>
 						<div class="input-group form-item input-select items-center gap-0">
-							<input type="email" name="email" class="form-control" placeholder="Enter Registered Email">
+							<input bind:value={$form.email} type="email" name="email" class="form-control" placeholder="Enter Registered Email">
 						</div>
 					</form>	
 					<div class="seprate-box mb-3">
