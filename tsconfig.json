@@ -1,12 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "ES2018",
-      "module": "es2020",
-      "moduleResolution": "node",
-      "baseUrl": "./",
-      "strict": true,                 // Enable strict type-checking options
-      "skipLibCheck": true,           // Skip type checking of declaration files
-      "noImplicitAny": false          // Bypass raising errors on `any` type
-    },
-    "include": ["resources/js/**/*","resources/js/lib/**/*"]  // Frontend paths pattern
-  }
+  "compilerOptions": {
+      "allowJs": true,
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "jsx": "preserve",
+      "strict": true,
+      "isolatedModules": true,
+      "lib": ["es6", "dom", "webworker"],
+      "target": "es6",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "skipLibCheck": true,
+      "paths": {
+          "@/*": ["./resources/js/*"],
+      },
+  },
+  "include": ["resources/js/**/*.ts", "resources/js/**/*.d.ts", "resources/js/**/*.svelte","resources/js/Pages/auth/*.svelte","resources/js/lib/**/*","resources/js/types/**/resources/js/app.tspp.ts", "resources/js/app.js", "resources/js/service-worker.js"],
+  "extends": "@tsconfig/svelte/tsconfig.json",
+}

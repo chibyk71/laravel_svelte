@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { createEventDispatcher } from "svelte";
 	import { slideVertical } from "../util/transiions/slideVertical";
 	import { canvas } from "./canvasStore";
 	let classname = "";
@@ -8,6 +9,19 @@
 	export let drag = true;
 	export let position = "bottom";
 	let dir:"up"|"down" = position == "bottom"? "up":"down";
+
+	const dispatch = createEventDispatcher()
+
+	const closeCanva = ()=>{
+		canvas.close(id)
+		dispatch("closed")
+	}
+
+	$:{
+		if ($canvas[0] === id) {
+			setTimeout(()=>{dispatch("opened")},500)
+		}
+	}
 </script>
 {#if $canvas.length && $canvas[0] === id}
 	<div transition:slideVertical={{dir}} class="offcanvas offcanvas-{position} {classname}" tabindex="-1" aria-modal="true" role="dialog">
@@ -25,5 +39,5 @@
 	</div>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div on:click={()=>{canvas.close()}} class="offcanvas-backdrop pwa-backdrop show"></div>
+	<div on:click={closeCanva} class="offcanvas-backdrop pwa-backdrop show"></div>
 {/if}

@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
     import { handleSubmit } from '../../lib/util/formSubmit';
 	import { isfixed } from '../../lib/util/headerFixed';
-    import { useForm } from "@inertiajs/svelte";
+    import { useForm, inertia } from "@inertiajs/svelte";
     import PasswordIput from '../shared/passwordIput.svelte';
     const form = useForm({
         email: null,
@@ -34,7 +34,7 @@
 						</div>
 						<PasswordIput bind:value={$form.password} name="password" placeholder="password" />
 					</form>
-					<a href="/forgotpassword" class="btn-link block mb-3 text-end text-underline">Forgot Password</a>	
+					<a use:inertia href="/recover" class="btn-link block mb-3 text-end text-underline">Forgot Password</a>	
 					<button form="login" type="submit" class="btn btn-primary btn-block mb-3">SIGN IN</button>
 					<div class="social-box">
 						<span>Or sign in with</span>
@@ -45,7 +45,7 @@
 					</div>	
 					<div class="flex items-center justify-center">
 						<a href={void(0)} class="text-light text-center block">Don’t have an account?</a>
-						<a href="/register" class="btn-link block ml-3 text-underline">Signup here</a>
+						<a use:inertia href="/register" class="btn-link block ml-3 text-underline">Signup here</a>
 					</div>
 				</div>
 			</div>

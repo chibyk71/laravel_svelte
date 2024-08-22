@@ -4,8 +4,9 @@
 	import InfiniteLoading, { type InfiniteEvent } from 'svelte-infinite-loading';
 	import Replies from './replies.svelte';
     import axios from 'axios';
-    import { Comment, CommentsData, Reply, User } from '../lib/type';
+    import type { Comment, CommentsData, User } from '../lib/type';
     import { UserAvatar } from '../lib/util/userStore';
+    import Title from './shared/title.svelte';
 	export let user: User;
 	let infiniteId = Symbol();
 	export let comments: CommentsData;
@@ -88,6 +89,7 @@
     }
 </script>
 
+<Title title="Comment" />
 <TopBar title="comment" />
 
 <!-- Page Content -->

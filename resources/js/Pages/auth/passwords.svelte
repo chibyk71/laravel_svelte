@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { handleSubmit } from 'resources/js/lib/util/formSubmit';
+    import { handleSubmit } from '../../lib/util/formSubmit';
 	import { isfixed } from '../../lib/util/headerFixed';
     import PasswordIput from '../shared/passwordIput.svelte';
-    import { useForm } from "@inertiajs/svelte";
+    import { useForm, inertia } from "@inertiajs/svelte";
     $isfixed = false;
 
 	const form = useForm({
@@ -29,7 +29,7 @@
 					<button form="form" type="submit" class="btn btn-primary mb-3 btn-block">SUBMIT</button>
 					<div class="flex items-center justify-center">
 						<a href={void(0)} class="text-light text-center block">Don’t have an account?</a>
-						<a href="/register" class="btn-link block ml-2 text-underline">SignUp here</a>
+						<a use:inertia href="/register" class="btn-link block ml-2 text-underline">SignUp here</a>
 					</div>
 				</div>
 			</div>

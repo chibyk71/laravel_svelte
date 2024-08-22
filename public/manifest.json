@@ -1,0 +1,16 @@
+{
+  "name": "Soziety - Social Network",
+  "short_name": "Soziety",
+  "description": "A social network mobile app template",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FE9063",
+  "theme_color": "#3b5998",
+  "icons": [
+    {
+      "src": "/images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

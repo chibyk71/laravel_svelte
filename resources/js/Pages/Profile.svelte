@@ -4,6 +4,7 @@
     import { useForm } from "@inertiajs/svelte";
     import { User } from '../lib/type';
     import { UserAvatar } from '../lib/util/userStore';
+    import Title from './shared/title.svelte';
 	export let user:User
     const form = useForm({
         name: user.name
@@ -14,6 +15,7 @@ const handleSubmit = () => {
 }
 </script>
 
+<Title title="Profile" />
 <TopBar title="edit profile">
     <svelte:fragment slot="right">
         <button type="submit" form="update" class="btn btn-sm bg-primary">						

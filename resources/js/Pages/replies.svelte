@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { HeartRegular, HeartSolid } from "svelte-awesome-icons";
 	import InfiniteLoading, { type InfiniteEvent } from "svelte-infinite-loading";
-    import { Reply } from "../lib/type"; 
+    import type { Reply } from "../lib/type"; 
     import axios from "axios";
 
     export let commentId:number

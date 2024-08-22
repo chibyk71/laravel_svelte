@@ -34,3 +34,5 @@ export const ShowHeader = writable(false)
 export const UserAvatar = (str:string)=>{
     return `https://ui-avatars.com/api/?name=${str}&background=0D8ABC&color=fff`
 }
+
+export const videoUrls = writable<string[]>([]);

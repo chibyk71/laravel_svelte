@@ -1,11 +1,13 @@
 
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
-    import Video from "./video.svelte";
+    import VideoCont from "./videoCont.svelte";
     import Swiper from "swiper";
+    import { ShowHeader } from "@/lib/util/userStore";
     import { Pagination } from "swiper/modules";
+    import type { Media } from "@/lib/type";
 
-    export let medias
+    export let medias:Media[]
     let swiperEl;
     onMount(()=>{
         if (medias.length > 1) {
@@ -25,9 +27,9 @@
     <div class="swiper-wrapper">
         {#each medias as media}
             {#if media.type == "image"}
-                <img class="reel swiper-slide" src="storage/{media.path}" alt="" />
+                <img on:click={()=>$ShowHeader = true} class="reel swiper-slide" src="storage/{media.path}" alt="" />
             {:else}
-                <Video src={media.path} />
+                <VideoCont srcURL={media.path} />
             {/if}
         {/each}
     </div>
